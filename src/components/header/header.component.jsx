@@ -1,5 +1,5 @@
 import  React from 'react'
-
+import {connect} from 'react-redux';
 import './header-component.scss';
 
 import {Link } from 'react-router-dom';
@@ -26,4 +26,9 @@ const Header =({utilizatorCurent}) => (
          </div>
     </div>
 )
-export default Header;
+
+const mapStateToProps = state =>({
+    utilizatorCurent: state.user.utilizatorCurent
+})
+
+export default connect(mapStateToProps)(Header);

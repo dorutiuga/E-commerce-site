@@ -6,35 +6,29 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInSignUpPage from './pages/signin-signup/signin-signup.component';
 import {auth , dateUtilizator } from './firebase/firebase.utils';
-
+import { connect} from'react-redux';
+import {setUtilizatorCurent} from './redux/user/user.actions'
 class  App extends React.Component {
 
-constructor(){
-  super()
-    this.state ={
-      utilizatorCurent : null
-    }
-}
 // prin metoda de mai jos aplicatia face rerender in momentul in care auth 
 //state ul se schimba. adica un user se logeaza sau delogheaza
 unsubscribeFromAuth = null;
 componentDidMount() {
+  const {setUtilizatorCurent} = this.props;
+
   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     if (userAuth) {
       const userRef = await dateUtilizator(userAuth);
 
       userRef.onSnapshot(snapShot => {
-        this.setState({
-          utilizatorCurent: {
+        setUtilizatorCurent({
             id: snapShot.id,
-          
             ...snapShot.data()
-          }
         });
       });
     }
 else {
-  this.setState({ utilizatorCurent: userAuth });
+  setUtilizatorCurent(userAuth);
 }
     
   });
@@ -48,7 +42,7 @@ componentWillUnmount(){
     return (
       <div>
     
-      <Header utilizatorCurent = {this.state.utilizatorCurent} />
+      <Header  />
     
         <Switch>
         <Route exact path = '/' component={Homepage}></Route>
@@ -63,6 +57,9 @@ componentWillUnmount(){
     }
   }
  
+  const mapDispatchToProps = dispatch =>({
+    setUtilizatorCurent: user => dispatch(setUtilizatorCurent(user))
+  });
 
-export default App;
+export default connect(null,mapDispatchToProps )(App);
  
