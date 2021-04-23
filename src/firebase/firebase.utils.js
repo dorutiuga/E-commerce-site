@@ -13,7 +13,7 @@ const config = {
     measurementId: "G-7S7GY4Y85X"
   };
   //prin aceasta functie, preluam utilizatorul din auth(logat cu google) si il v-om atasa coletiei users
-  export const dateUtilizator = async (userAuth, additionalData) => {
+  export const dateUtilizator = async (userAuth, additionalData) => { //functie anonima
     if (!userAuth) return;
   
     const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -28,7 +28,7 @@ const config = {
           displayName,
           email,
           createdAt,
-          ...additionalData
+          ...additionalData //de ce sunt puse ... pentru ca afiseaza o lista de paraemtrii
         });
       } catch (error) {
         console.log('error creating user', error.message);
