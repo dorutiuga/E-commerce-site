@@ -4,10 +4,16 @@ import Homepage from './pages/homepage/homepage.component';
 import {Switch ,  Route , Redirect} from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
+
 import SignInSignUpPage from './pages/signin-signup/signin-signup.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 import {auth , dateUtilizator } from './firebase/firebase.utils';
 import { connect} from'react-redux';
 import {setUtilizatorCurent} from './redux/user/user.actions'
+import { selectUtilizatorCurent } from './redux/user/user.selectors';
+import { createStructuredSelector} from 'reselect';
+
+
 class  App extends React.Component {
 
 // prin metoda de mai jos aplicatia face rerender in momentul in care auth 
@@ -43,13 +49,14 @@ componentWillUnmount(){
         <Route exact path = '/' component={Homepage}></Route>
         <Route  path = '/shop' component={ShopPage}></Route>
         <Route exact path ='/signin'  render= {()=> this.props.utilizatorCurent ? (<Redirect to= '/' />) : (<SignInSignUpPage />)}  />
+        <Route exact path = '/checkout' component = {CheckoutPage}></Route>
         </Switch>
         </div>
     );
     }
   }
-  const mapStateToProps = ({ user }) => ({
-    utilizatorCurent: user.utilizatorCurent
+  const mapStateToProps = createStructuredSelector({
+    utilizatorCurent: selectUtilizatorCurent
   });
   const mapDispatchToProps = dispatch =>({
     setUtilizatorCurent: user => dispatch(setUtilizatorCurent(user))
