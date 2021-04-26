@@ -30,30 +30,22 @@ componentDidMount() {
 else {
   setUtilizatorCurent(userAuth);
 }
-    
   });
 }
-
 componentWillUnmount(){
   this.unsubscribeFromAuth();
 }
-
   render(){
     return (
       <div>
-    
       <Header  />
-    
         <Switch>
         <Route exact path = '/' component={Homepage}></Route>
         <Route  path = '/shop' component={ShopPage}></Route>
         <Route exact path ='/signin'  render= {()=> this.props.utilizatorCurent ? (<Redirect to= '/' />) : (<SignInSignUpPage />)}  />
-          
         </Switch>
         </div>
-      
     );
-      
     }
   }
   const mapStateToProps = ({ user }) => ({
