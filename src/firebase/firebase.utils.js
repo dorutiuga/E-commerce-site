@@ -28,7 +28,7 @@ const config = {
           displayName,
           email,
           createdAt,
-          ...additionalData //de ce sunt puse ... pentru ca afiseaza o lista de paraemtrii
+          ...additionalData //afiseaza o lista de paraemtrii
         });
       } catch (error) {
         console.log('error creating user', error.message);
