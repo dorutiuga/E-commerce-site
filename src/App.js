@@ -7,7 +7,7 @@ import Header from './components/header/header.component';
 
 import SignInSignUpPage from './pages/signin-signup/signin-signup.component';
 import CheckoutPage from './pages/checkout/checkout.component';
-import {auth , dateUtilizator } from './firebase/firebase.utils';
+import {auth , dateUtilizator} from './firebase/firebase.utils';
 import { connect} from'react-redux';
 import {setUtilizatorCurent} from './redux/user/user.actions'
 import { selectUtilizatorCurent } from './redux/user/user.selectors';
@@ -35,6 +35,7 @@ componentDidMount() {
     }
 else {
   setUtilizatorCurent(userAuth);
+  
 }
   });
 }
@@ -63,4 +64,3 @@ componentWillUnmount(){
   });
 
 export default connect(mapStateToProps,mapDispatchToProps )(App);
- 

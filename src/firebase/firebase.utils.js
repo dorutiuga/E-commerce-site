@@ -12,14 +12,15 @@ const config = {
     appId: "1:763283060175:web:67786c29647c58c5f40eba",
     measurementId: "G-7S7GY4Y85X"
   };
+  firebase.initializeApp(config);
   //prin aceasta functie, preluam utilizatorul din auth(logat cu google) si il v-om atasa coletiei users
   export const dateUtilizator = async (userAuth, additionalData) => { //functie anonima
+
     if (!userAuth) return;
   
     const userRef = firestore.doc(`users/${userAuth.uid}`);
-  
     const snapShot = await userRef.get();
-  
+
     if (!snapShot.exists) {
       const { displayName, email } = userAuth;
       const createdAt = new Date();
@@ -28,8 +29,9 @@ const config = {
           displayName,
           email,
           createdAt,
+          
           ...additionalData //afiseaza o lista de paraemtrii
-        });
+        })
       } catch (error) {
         console.log('error creating user', error.message);
       }
@@ -38,8 +40,37 @@ const config = {
     return userRef;
   };
   
+  export const addCollectionAndDocuments = async (
+    collectionKey,
+    objectsToAdd
+  ) => {
+    const collectionRef = firestore.collection(collectionKey);
+  
+    const batch = firestore.batch();
+    objectsToAdd.forEach(obj => {
+      const newDocRef = collectionRef.doc();
+      batch.set(newDocRef, obj);
+    });
+  
+    return await batch.commit();
+  };
  
-  firebase.initializeApp(config);
+ export const convertCollectionsSnapshotToMap =(collections) => {
+      const trasformedCollection = collections.docs.map(doc => {
+        const {title , items } = doc.data();
+
+        return {
+          routeName : encodeURI(title.toLowerCase()),
+          id : doc.id,
+          title, 
+          items
+        };
+      })
+      return trasformedCollection.reduce((accumulator, collection)=> {
+      accumulator[collection.title.toLowerCase()] =collection;
+      return accumulator;
+    }, {})
+  };
 
   export const auth  = firebase.auth();
   export const firestore = firebase.firestore();
