@@ -7,27 +7,18 @@ import Header from './components/header/header.component';
 
 import SignInSignUpPage from './pages/signin-signup/signin-signup.component';
 import CheckoutPage from './pages/checkout/checkout.component';
-
+import {useEffect} from 'react';
 import { connect} from'react-redux';
 import { checkUserSession} from './redux/user/user.actions';
 import { selectUtilizatorCurent } from './redux/user/user.selectors';
 import { createStructuredSelector} from 'reselect';
 
 
-class  App extends React.Component {
+const  App =({checkUserSession, utilizatorCurent})=> {
 
-// prin metoda de mai jos aplicatia face rerender in momentul in care auth 
-//state ul se schimba. adica un user se logeaza sau delogheaza
-unsubscribeFromAuth = null;
-componentDidMount() {
- const {checkUserSession} =  this.props;
- checkUserSession();
-}
-componentWillUnmount(){
-  this.unsubscribeFromAuth();
-}
-  render(){
-    
+  useEffect(()=>{
+    checkUserSession()
+  },[checkUserSession]);
     return (
       <div>
       
@@ -43,7 +34,7 @@ componentWillUnmount(){
         </div>
     );
     }
-  }
+ 
   const mapStateToProps = createStructuredSelector({
     utilizatorCurent: selectUtilizatorCurent
 
