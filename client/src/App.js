@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
+import {GlobalStyle} from './global.styles';
 import Homepage from './pages/homepage/homepage.component';
 import {Switch ,  Route , Redirect} from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
-
 import SignInSignUpPage from './pages/signin-signup/signin-signup.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import {useEffect} from 'react';
@@ -21,9 +20,8 @@ const  App =({checkUserSession, utilizatorCurent})=> {
   },[checkUserSession]);
     return (
       <div>
-      
+      <GlobalStyle />
       <Header  />
-    
         <Switch>
         <Route exact path = '/' component={Homepage}></Route>
         <Route  path = '/shop' component={ShopPage}></Route>
