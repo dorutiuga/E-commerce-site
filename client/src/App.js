@@ -11,7 +11,7 @@ import { connect} from'react-redux';
 import { checkUserSession} from './redux/user/user.actions';
 import { selectUtilizatorCurent } from './redux/user/user.selectors';
 import { createStructuredSelector} from 'reselect';
-
+import ContactPage from './pages/contact/contact.component';
 
 const  App =({checkUserSession, utilizatorCurent})=> {
 
@@ -24,9 +24,11 @@ const  App =({checkUserSession, utilizatorCurent})=> {
       <Header  />
         <Switch>
         <Route exact path = '/' component={Homepage}></Route>
-        <Route  path = '/shop' component={ShopPage}></Route>
+        <Route path = '/shop' component={ShopPage}></Route>
+        <Route exact path = '/contact' component = {ContactPage}></Route>
         <Route exact path ='/signin'  render= {()=> utilizatorCurent ? (<Redirect to= '/' />) : (<SignInSignUpPage />)}  />
         <Route exact path = '/checkout' component = {CheckoutPage}></Route>
+        
         </Switch>
        
         </div>

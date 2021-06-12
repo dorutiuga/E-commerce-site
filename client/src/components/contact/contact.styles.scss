@@ -1,0 +1,23 @@
+.container{
+    margin: auto;
+    width: 90%;
+  
+   img{
+       width: 100%;
+   }
+ .info{
+
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+
+        .info-piece{
+            border: 1px solid grey;
+            height:100px;
+            text-align: center;
+            align-items: center;
+            padding: 17px;
+        }
+    }
+}

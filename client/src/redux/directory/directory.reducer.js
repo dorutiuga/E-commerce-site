@@ -1,36 +1,37 @@
 const INITIAL_STATE = {
   sections: [
     {
-      title: 'hats',
-      imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+      title: 'lose weight',
+      imageUrl: ' https://i.ibb.co/RpZx1pX/lose-wight.webp',
       id: 1,
-      linkUrl: 'shop/hats'
+      linkUrl: 'shop/lose weight'
     },
+   
     {
-      title: 'jackets',
-      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+      title: 'maintain',
+      imageUrl: 'https://i.ibb.co/dKFYjvY/lose-wight.webp',
       id: 2,
-      linkUrl: 'shop/jackets'
+      linkUrl: 'shop/maintain'
     },
     {
-      title: 'sneakers',
-      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+      title: 'build muscle',
+      imageUrl: 'https://i.ibb.co/qnVTKPk/build-muscle.jpg',
       id: 3,
-      linkUrl: 'shop/sneakers'
+      linkUrl: 'shop/build muscle'
     },
     {
-      title: 'womens',
-      imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+      title: 'supliments',
+      imageUrl: 'https://i.ibb.co/R2k3CHw/supliments.jpg',
       size: 'large',
       id: 4,
-      linkUrl: 'shop/womens'
+      linkUrl: 'shop/supliments'
     },
     {
-      title: 'mens',
-      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+      title: 'healthy snacks',
+      imageUrl: 'https://i.ibb.co/vDY9kh4/healthy-snacks.jpg',
       size: 'large',
       id: 5,
-      linkUrl: 'shop/mens'
+      linkUrl: 'shop/healthy snacks'
     }
   ]
 };
