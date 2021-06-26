@@ -8,11 +8,24 @@ const Contact = () =>(
 <hr/>
 
     <div  className = "info">
-        <div className = "info-piece"><p>Phone: 0720202020</p></div>
-        <div className = "info-piece"> <p>Call Center: monday - friday 9:00 - 17:00</p> </div>
-        <div className = "info-piece"><p>Email: dorutiuga60@gmail.com</p></div>
+    <div className = "info-piece">
+            <div className = 'content '>
+            <div className = 'title'> Phone: 0720202020 </div>
+            </div>
+            </div>
+            <div className = "info-piece">
+            <div className = 'content '>
+            <div className = 'title'> Call Center: monday - friday 9:00 - 17:00 </div>
+            </div>
+            </div>
+            <div className = "info-piece">
+            <div className = 'content '>
+            <div className = 'title'>Email: bHealthTeam@gmail.com </div>
+            </div>
+            </div>
     </div>
     </div>
 );
 
 export default Contact;
+

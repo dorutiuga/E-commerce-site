@@ -28,6 +28,7 @@ export function* signInWithGoogle() {
       yield getSnapshotFromUserAuth(user);
     } catch (error) {
       yield put(signInFailure(error));
+      alert("The password is invalid or the user does not have a password.")
     }
   }
   export function* isUserAtuhenticated(){
@@ -55,7 +56,7 @@ export function* signOut() {
     try {
       const { user } = yield auth.createUserWithEmailAndPassword(email, password);
       yield put(signUpSuccess({ user, additionalData: { displayName } }));
-    } catch (error) {
+    } catch (error) {  
       yield put(signUpFailure(error));
     }
   }

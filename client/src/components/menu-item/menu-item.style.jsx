@@ -21,7 +21,7 @@ export const MenuItemContainer = styled.div`
 			opacity: 0.9;
 		}
 	}
-	&:first-child {
+	&:first-child { // cu ajutorul "&" se poate include(nested) in interiorul primei clase. Echivalent .menu-item: first-child (css) 
     margin-right: 7.5px;
   }
   &:last-child {

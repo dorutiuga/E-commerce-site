@@ -27,8 +27,7 @@ const  App =({checkUserSession, utilizatorCurent})=> {
         <Route path = '/shop' component={ShopPage}></Route>
         <Route exact path = '/contact' component = {ContactPage}></Route>
         <Route exact path ='/signin'  render= {()=> utilizatorCurent ? (<Redirect to= '/' />) : (<SignInSignUpPage />)}  />
-        <Route exact path = '/checkout' component = {CheckoutPage}></Route>
-        
+        <Route exact path = '/checkout'render = {() => !utilizatorCurent? (<Redirect to ='signin' />) : (<CheckoutPage />)}></Route>
         </Switch>
        
         </div>

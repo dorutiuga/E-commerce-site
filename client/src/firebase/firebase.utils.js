@@ -13,15 +13,15 @@ const config = {
     measurementId: "G-7S7GY4Y85X"
   };
   firebase.initializeApp(config);
-  //prin aceasta functie, preluam utilizatorul din auth(logat cu google) si il v-om atasa coletiei users
-  export const dateUtilizator = async (userAuth, additionalData) => { //functie anonima
+
+  export const dateUtilizator = async (userAuth, additionalData) => { 
 
     if (!userAuth) return;
   
     const userRef = firestore.doc(`users/${userAuth.uid}`);
     const snapShot = await userRef.get();
 
-    if (!snapShot.exists) {
+    if (!snapShot.exists) { 
       const { displayName, email } = userAuth;
       const createdAt = new Date();
       try {
@@ -51,7 +51,7 @@ const config = {
       return snapShot.docs[0].ref;
     }
   };
-  
+
   export const addCollectionAndDocuments = async (
     collectionKey,
     objectsToAdd
@@ -95,8 +95,8 @@ export const getUtilizatorCurent = () =>{
 
   export const auth  = firebase.auth();
   export const firestore = firebase.firestore();
-// creaza un serviciu de autentificare Google
- export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+ export const googleProvider = new firebase.auth.GoogleAuthProvider();// creaza un serviciu de autentificare Google
   googleProvider.setCustomParameters({ prompt: 'select_account' });
   export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 

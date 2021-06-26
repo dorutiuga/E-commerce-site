@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectCart = state => state.cart; //it gets the hole state and return just a piece of it
+const selectCart = state => state.cart; 
 
 export const selectCartItems = createSelector(
     [selectCart],

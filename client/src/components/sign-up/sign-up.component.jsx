@@ -23,8 +23,7 @@ const SignUp = ({signUpStart})  => {
         return;
       }
       signUpStart({displayName,  email, password});
-
-    };
+    }; 
   
   const  handleChange = event => {
       const { name, value } = event.target;
